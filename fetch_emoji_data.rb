@@ -3,7 +3,9 @@ require 'open-uri'
 # Script pulls emoji definitions off of the Unicode website and
 # creates an output.txt with just the codes for input to process.rb
 
-unicode_url = 'https://www.unicode.org/Public/emoji/6.0/emoji-data.txt'
+# https://unicode.org/emoji/charts/full-emoji-list.html
+# upgrade the emoji verion to 15
+unicode_url = 'https://unicode.org/Public/15.0.0/ucd/emoji/emoji-data.txt'
 file_contents = open(unicode_url) { |f| f.read }
 emoji_code_lines = file_contents.split("\n").map{ |x| x.split(" ;")[0] }.compact.map(&:rstrip)
 output_file = 'emoji_sorted.txt'
